@@ -265,15 +265,19 @@ function startChat(){
 }
 
 function askName(){
-  botSays([`はじめる前に…<br>お名前、なんて呼んだらいいですか？<br>ニックネームでOKですよ。`], ()=>{
+  botSays([`はじめる前に…<br>お名前、なんて呼んだらいいですか？<br><br>「さん」や「ちゃん」は私がつけるので、<br><strong>「はな」</strong>みたいな感じで<br>教えてください。`], ()=>{
     const wrap = document.createElement('div');
     wrap.className = 'name-wrap';
-    wrap.innerHTML = `<input type="text" id="nameInput" placeholder="ニックネームでOK" maxlength="12" autocomplete="off">
+    wrap.innerHTML = `<input type="text" id="nameInput" placeholder="例：はな" maxlength="12" autocomplete="off">
       <button type="button" id="nameBtn">送信</button>`;
     chatArea.appendChild(wrap); scrollToBottom();
     const input = wrap.querySelector('#nameInput');
     const doSubmit = ()=>{
-      const v = input.value.trim().slice(0,12);
+      let v = input.value.trim().slice(0,12);
+      for(;;){
+        const m = v.match(/^(.+?)[\s　]*(さん|ちゃん|くん|さま|様)$/);
+        if(m && m[1].trim()) v = m[1].trim(); else break;
+      }
       wrap.remove();
       if(v){
         userName = v;

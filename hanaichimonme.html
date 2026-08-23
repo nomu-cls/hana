@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はないちもんめセラピー — あの頃のあなたは、何を見ていた？｜小泉華子</title>
+<meta name="description" content="子どもの頃の「はないちもんめ」で、あなたは何を思っていましたか。その記憶から、今もつづく思考のクセと、あなたが無意識に大切にしてきたものを見つけます。どんな自分にも花まるを。小泉華子（はなちゃん）のはないちもんめセラピー。">
+<meta property="og:title" content="はないちもんめセラピー｜あの頃のあなたは、何を見ていた？">
+<meta property="og:description" content="同じ遊びをしていても、見ていた世界は一人ひとり違います。3分であなたの「つい見てしまうところ」を。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-banner.png"><!-- 公開時はフルURL（https://ドメイン/og-banner.png）に差し替え -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:88px;%22>💮</text></svg>">
+<style>
+:root{
+  --paper:#FDF6EC; --ink:#4C3B2A; --ink-dim:#A08B72;
+  --rose:#E98A3C; --rose-bg:#FDEEDC; --rose-line:rgba(233,138,60,.5);
+  --leaf:#C8862B; --maru:#E8542F;
+  --plum:#6B4226; --plum-2:#7A4E2E; --plum-ink:#FBF1E4;
+  --white:#FFFFFF; --line:rgba(76,59,42,.13);
+  --serif:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
+  --sans:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height:100vh;min-height:100dvh}
+.container{max-width:480px;width:100%;margin:0 auto;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow-x:hidden;background:var(--paper)}
+.header{background:linear-gradient(135deg,#FDEEDC,#FBF3E4);padding:13px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(76,59,42,.06)}
+.header-avatar{width:44px;height:44px;border-radius:50%;flex-shrink:0;background:var(--rose-bg);border:2px solid var(--rose);display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden}
+.header-avatar img,.msg-avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;border-radius:50%}
+.header-info h3{font-size:13.5px;font-weight:700}
+.header-info h3 .tag{display:inline-block;background:var(--rose);color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:1px}
+.header-info p{font-size:10px;color:var(--rose);display:flex;align-items:center;gap:4px}
+.header-info p .dot{width:6px;height:6px;border-radius:50%;background:#7DBE86;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+.chat-area{flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 14px 24px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.msg{display:flex;gap:8px;max-width:92%;animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg-bot{align-self:flex-start}
+.msg-user{align-self:flex-end;flex-direction:row-reverse}
+.msg-avatar{width:34px;height:34px;border-radius:50%;flex-shrink:0;align-self:flex-end;background:var(--rose-bg);border:1.5px solid var(--rose);display:flex;align-items:center;justify-content:center;font-size:15px;overflow:hidden}
+.msg-bubble{padding:11px 14px;border-radius:16px;font-size:14.5px;line-height:1.9;word-break:break-word}
+.msg-bot .msg-bubble{background:var(--white);border:1px solid var(--line);border-bottom-left-radius:5px;box-shadow:0 2px 8px rgba(76,59,42,.06)}
+.msg-user .msg-bubble{background:var(--plum);color:#F5EEE9;border-bottom-right-radius:5px}
+.typing{display:flex;gap:8px;align-self:flex-start}
+.typing-dots{background:var(--white);border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;padding:14px 16px;display:flex;gap:5px;align-items:center}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--ink-dim);animation:blink 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.options-wrap{display:flex;flex-direction:column;gap:8px;align-self:stretch;padding-left:42px;animation:fadeUp .35s ease both}
+.opt-btn{text-align:left;background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font-family:var(--sans);color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:flex-start;transition:border-color .15s,background .15s,transform .1s;width:100%}
+.opt-btn:hover{border-color:var(--rose);background:var(--rose-bg)}
+.opt-btn:active{transform:scale(.985)}
+.opt-btn:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.opt-emoji{flex-shrink:0;font-size:17px;line-height:1.5}
+.opt-body{flex:1}
+.opt-quote{display:block;font-size:14.5px;font-weight:700;line-height:1.6}
+.opt-sub{display:block;font-size:11.5px;color:var(--ink-dim);line-height:1.65;margin-top:2px}
+.name-wrap{display:flex;gap:8px;padding-left:42px;align-self:stretch}
+.name-wrap input{flex:1;min-width:0;padding:12px 15px;border:1.5px solid var(--line);border-radius:14px;font-family:var(--sans);font-size:15px;background:var(--white);color:var(--ink)}
+.name-wrap input:focus{outline:2px solid var(--rose);border-color:transparent}
+.name-wrap button{padding:12px 18px;border:none;border-radius:14px;background:var(--rose);color:#fff;font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;flex-shrink:0}
+.type-card{background:radial-gradient(420px 220px at 85% -10%, rgba(242,184,75,.4), transparent 62%),var(--plum);color:var(--plum-ink);border-radius:18px;padding:20px 16px 17px;margin:2px 0;text-align:center}
+.type-card .tc-eyebrow{font-size:10px;letter-spacing:.28em;color:#E5C9A4;margin-bottom:8px}
+.type-card .tc-letter{font-family:var(--serif);font-weight:900;font-size:34px;line-height:1;color:#F2B84B;margin-bottom:6px}
+.type-card .tc-name{font-family:var(--serif);font-size:18px;line-height:1.6}
+.type-card .tc-axis{display:inline-block;margin-top:11px;font-size:11px;letter-spacing:.12em;border:1px solid rgba(251,241,228,.4);border-radius:999px;padding:4px 13px}
+.map-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:15px 13px 13px;margin:2px 0}
+.map-card .mc-t{font-family:var(--serif);font-size:12.5px;text-align:center;letter-spacing:.08em;margin-bottom:3px}
+.map-card .mc-s{font-size:10.5px;text-align:center;color:var(--ink-dim);margin-bottom:11px}
+.mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.mcell{border:1px solid var(--line);border-radius:11px;padding:9px 4px 8px;text-align:center;background:#FCFAF7;transition:box-shadow .4s ease,transform .4s ease}
+.mcell .l{font-family:var(--serif);font-size:11px;color:var(--ink-dim)}
+.mcell .n{font-size:11.5px;font-weight:700;margin-top:2px;line-height:1.35}
+.mcell.on{background:var(--rose-bg);border-color:var(--rose);box-shadow:0 0 0 1px var(--rose),0 4px 16px rgba(196,117,110,.25);transform:translateY(-2px)}
+.mcell.on .l,.mcell.on .n{color:var(--rose)}
+.gift-card{background:linear-gradient(135deg,#FFF6DF,#FDF0E2);border:1.5px solid rgba(200,134,43,.4);border-radius:18px;padding:16px 15px;margin:2px 0}
+.gift-card .g-t{font-size:10px;letter-spacing:.24em;color:var(--leaf);margin-bottom:7px}
+.gift-card .g-b{font-family:var(--serif);font-size:15px;line-height:1.85}
+.q-card{background:var(--rose-bg);border:1.5px solid var(--rose-line);border-radius:18px;padding:18px 15px;margin:2px 0;text-align:center}
+.q-card .q-t{font-size:10px;letter-spacing:.24em;color:var(--rose);margin-bottom:9px}
+.q-card .q-b{font-family:var(--serif);font-size:16.5px;line-height:1.85}
+.q-card .q-n{font-size:12px;color:var(--ink-dim);margin-top:10px;line-height:1.8}
+.cta-card{background:linear-gradient(135deg,#FDEEDC,#FBF3E4);border:1.5px solid var(--rose-line);border-radius:18px;padding:20px 16px;text-align:center;margin:2px 0}
+.cta-card .t{font-family:var(--serif);font-size:15.5px;line-height:1.8;margin-bottom:8px}
+.cta-card .s{font-size:12px;color:var(--ink-dim);margin-bottom:14px;line-height:1.85}
+.cta-list{text-align:left;background:var(--white);border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:15px}
+.cta-list li{list-style:none;font-size:12.5px;line-height:1.8;padding-left:19px;position:relative;margin:5px 0}
+.cta-list li::before{content:"💮";position:absolute;left:0;font-size:11px;top:2px}
+.cta-btn{display:block;width:100%;padding:15px;border:none;border-radius:999px;margin-bottom:9px;background:#06C755;color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:transform .12s,box-shadow .2s}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(6,199,85,.35)}
+.cta-btn.sub{background:var(--white);color:var(--ink);border:1.5px solid var(--line);font-weight:500;font-size:14px;padding:13px}
+.cta-btn.sub:hover{box-shadow:0 4px 14px rgba(76,59,42,.12)}
+.cta-note{font-size:10.5px;color:var(--ink-dim);margin-top:8px;line-height:1.7}
+.analyzing{background:var(--white);border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;padding:14px 16px;font-size:13px}
+.analyzing .step{color:var(--ink-dim);margin-top:5px;transition:color .3s}
+.analyzing .step.done{color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="header-avatar"><img id="headerAvatar" src="hanako-avatar.jpg" alt="華子" onerror="this.parentNode.textContent='💮'"></div>
+    <div class="header-info">
+      <h3>小泉華子（はなちゃん）<span class="tag">セラピー</span></h3>
+      <p><span class="dot"></span>自分にダメ出しより花丸を！（3分・無料）</p>
+    </div>
+  </header>
+  <main class="chat-area" id="chatArea" aria-live="polite"></main>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   設定 ── ここだけ差し替えれば公開できます
+   ═══════════════════════════════════════════ */
+const LINE_URL   = "";              // ← はなちゃんのLINE友だち追加URL（https://lin.ee/xxxx）
+const AVATAR_IMG = "hanako-avatar.jpg";  // ← 同じフォルダに写真を置く
+
+/* ═══ チャットエンジン ═══ */
+const chatArea = document.getElementById('chatArea');
+function scrollToBottom(){ setTimeout(()=>{ chatArea.scrollTop = chatArea.scrollHeight; }, 50); }
+function avatarHTML(){ return `<div class="msg-avatar"><img src="${AVATAR_IMG}" alt="華子" onerror="this.parentNode.textContent='💮'"></div>`; }
+function addBotMsg(html){
+  const div = document.createElement('div');
+  div.className = 'msg msg-bot';
+  div.innerHTML = avatarHTML() + `<div class="msg-bubble">${html}</div>`;
+  chatArea.appendChild(div); scrollToBottom();
+}
+function addUserMsg(text){
+  const div = document.createElement('div');
+  div.className = 'msg msg-user';
+  div.innerHTML = `<div class="msg-bubble">${text}</div>`;
+  chatArea.appendChild(div); scrollToBottom();
+}
+function addCustomHTML(html){
+  const div = document.createElement('div');
+  div.className = 'msg msg-bot';
+  div.innerHTML = avatarHTML() + `<div class="msg-bubble" style="padding:7px;background:transparent;border:none;box-shadow:none;max-width:100%;flex:1;">${html}</div>`;
+  chatArea.appendChild(div); scrollToBottom();
+  return div;
+}
+function addOptions(options, callback){
+  const wrap = document.createElement('div');
+  wrap.className = 'options-wrap';
+  options.forEach(opt=>{
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `<span class="opt-emoji">${opt.emoji}</span>
+      <span class="opt-body"><span class="opt-quote">${opt.quote}</span>
+      ${opt.sub ? `<span class="opt-sub">${opt.sub}</span>` : ``}</span>`;
+    btn.onclick = ()=>{
+      wrap.remove();
+      addUserMsg(`${opt.emoji} ${opt.quote}`);
+      setTimeout(()=>callback(opt.value), 300);
+    };
+    wrap.appendChild(btn);
+  });
+  chatArea.appendChild(wrap); scrollToBottom();
+}
+function showTyping(){
+  const div = document.createElement('div');
+  div.className = 'typing'; div.id = 'typingIndicator';
+  div.innerHTML = avatarHTML() + `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+  chatArea.appendChild(div); scrollToBottom();
+}
+function hideTyping(){ const el = document.getElementById('typingIndicator'); if(el) el.remove(); }
+function botSays(messages, onDone){
+  let i = 0;
+  (function next(){
+    if(i >= messages.length){ if(onDone) setTimeout(onDone, 300); return; }
+    showTyping();
+    const textLen = messages[i].replace(/<[^>]*>/g,'').length;
+    const delay = 700 + Math.min(textLen * 28, 3000);
+    setTimeout(()=>{
+      hideTyping(); addBotMsg(messages[i]); i++;
+      setTimeout(next, 480);
+    }, delay);
+  })();
+}
+
+/* ═══ 4タイプ（8つの選択肢を集約） ═══ */
+const TYPE_OF = {A:"T1", B:"T1", C:"T2", F:"T2", D:"T3", E:"T3", G:"T4", H:"T4"};
+const AXES = [
+  {k:"T1", mark:"🙋", axis:"選ばれるかな？"},
+  {k:"T2", mark:"🤝", axis:"みんなと一緒"},
+  {k:"T3", mark:"🔥", axis:"勝ちたい！"},
+  {k:"T4", mark:"🌟", axis:"私は私"}
+];
+
+/* ═══ 選択肢（8つのまま） ═══ */
+const CHOICES = [
+  {value:"A", emoji:"🙋", quote:"「私を選んでほしい！」",         sub:"自分の名前が呼ばれるか、ドキドキしてた。"},
+  {value:"B", emoji:"😣", quote:"「選ばれなかったらイヤだな……」", sub:"最後まで残っちゃうのが、すっごい気になってた。"},
+  {value:"C", emoji:"🤝", quote:"「○○ちゃんと一緒のチームがいい！」", sub:"勝ち負けより、誰と一緒にいられるかが大事だった。"},
+  {value:"D", emoji:"🧠", quote:"「誰を取ったら勝てるかな？」",   sub:"相手のチームを見ながら、作戦を考えてた。"},
+  {value:"E", emoji:"🔥", quote:"「絶対、勝ちたい！」",           sub:"じゃんけんも勝負も、負けるとすっごい悔しかった。"},
+  {value:"F", emoji:"🫧", quote:"「あの子、選ばれなくて大丈夫かな？」", sub:"自分より、選ばれてない子や周りの様子が気になってた。"},
+  {value:"G", emoji:"👀", quote:"「なんでみんな、そんなに必死なんだろう？」", sub:"ちょっと離れたところから、みんなを観察してた。"},
+  {value:"H", emoji:"🎶", quote:"「わーい、楽しい！」",           sub:"歌ったり歩いたり、遊ぶことそのものが楽しかった。"}
+];
+
+/* ═══ 結果（華子さん語り・4タイプ） ═══ */
+const TYPES = {
+T1:{ mark:"🙋", axis:"選ばれること", name:"「選ばれるかな？」<br>ドキドキさん",
+  body:[
+    (n)=>`${n}さんが見てたのは、<strong>「選ばれるか、選ばれないか」</strong>。<br><br>人に認められること、必要とされることに、すっごい敏感な子だったのかもしれません。`,
+    ()=>`「選ばれる＝私は大切」<br>「選ばれない＝私は大切じゃない」<br><br>って、いつの間にか<strong>自分の価値を“相手の反応”で確認するクセ</strong>、できてたりするんですよね。`,
+    ()=>`だから大人になった今も、<br><br>「ちゃんと評価されてる？」<br>「私のこと、必要？」<br>「嫌われてないかな…」<br><br>って、つい周りの反応を確認しちゃってません？<br><br>これね、私も本当に分かるんですよ（笑）`
+  ],
+  gift:`求められたことに、ちゃんと応える力。<br>人の気持ちに敏感でいられる繊細さ。`,
+  q:`誰にも選ばれなくても、<br>私は私を選べる？`, qn:"" },
+
+T2:{ mark:"🤝", axis:"人とのつながり", name:"「みんなと一緒」<br>つながりさん",
+  body:[
+    (n)=>`${n}さんが見てたのは、<strong>「誰と一緒か」と「みんなの気持ち」</strong>。<br><br>何をするかより、誰とするか。自分のことより、周りの子の様子。そこに自然と目がいく子だったのかもしれません。`,
+    ()=>`人の表情とか、空気の変化を感じ取る力が強いんですよね。<br><br>「あの人、困ってないかな」<br>「みんなが気持ちよくいられるように」<br>「一人になったらどうしよう」`,
+    ()=>`その優しさは本物なんだけど、いつの間にか<strong>他人の気持ちまで、自分の責任</strong>にしちゃってたり、<br><br>人との関係を基準に、自分のことを決めちゃってたりすること、ありません？`
+  ],
+  gift:`人と人をつないで、<br>場に温かさを生み出せること。`,
+  q:`ところで私は、<br>今、どう感じてる？`,
+  qn:`あなたも「みんな」の一人ですからね。` },
+
+T3:{ mark:"🔥", axis:"勝つこと", name:"「勝ちたい！」<br>まっすぐ勝負さん",
+  body:[
+    (n)=>`${n}さんが見てたのは、<strong>「どうやったら勝てるか」</strong>。<br><br>作戦を考えるのも、勝負に燃えるのも、昔っから強いエネルギーがあった証拠です。`,
+    ()=>`「やるなら勝ちたい」<br>「一番いい方法は？」<br>「もっと上手になりたい」<br><br>目標があると、本当に大きな力が出るタイプ。<br>これ、仕事でも人生でも強力な力です。`,
+    ()=>`ただこれがね、<br><br><strong>負ける＝ダメ<br>できない＝価値がない</strong><br><br>になっちゃうと、いつまでたっても自分に花丸をあげられなくなるんですよ。<br><br>正解を探しすぎて、「なんとなく好き」が置き去りになっちゃったりね。`
+  ],
+  gift:`目標に向かって力を出しきる力と、<br>先を読んで道すじを組み立てる頭。`,
+  q:`勝たなくても楽しいことって、<br>何だろう？`,
+  qn:`結果じゃなくてね、<br>夢中になってる自分にも、ちゃんと価値があるんです。` },
+
+T4:{ mark:"🌟", axis:"自分の世界", name:"「私は私」<br>マイワールドさん",
+  body:[
+    (n)=>`${n}さんが見てたのは、勝ち負けでも選ばれるかでもなくて、<strong>自分の世界</strong>。<br><br>一歩引いてみんなを観察してたり、遊びそのものを全力で味わってたり。`,
+    ()=>`「これってどういうこと？」って考えられる目と、<br>「今、楽しい！」に飛び込める心。<br><br>場に飲み込まれない、<strong>自分の視点</strong>を持ってるんですよね。<br><br>これ、クリエイティビティにもつながる、本当に素敵な資質です。`,
+    ()=>`ただね、自分の世界が心地いいからこそ、<br><br>輪に入るタイミングを逃しちゃったり、<br>先のことは後回しになっちゃったり（笑）<br><br>私もそっち側なんで、めちゃくちゃ分かります。`
+  ],
+  gift:`当たり前を疑える自分の視点と、<br>“今ここ”を味わいつくせる力。`,
+  q:`その自分の世界、<br>誰かとちょっと分かち合ったら<br>何が起きる？`, qn:"" }
+};
+
+/* ═══ 進行 ═══ */
+let userName = "あなた";
+let myType = null;
+
+function startChat(){
+  botSays([
+    `こんにちは。<br>どんな自分にも花まるを。<br>小泉華子です。`,
+    `今日はね、ちょっとだけ<br>昔のことを思い出してもらいます。`,
+    `子どもの頃にやった、<br><strong>「はないちもんめ」</strong>。<br><br>♪ かってうれしい はないちもんめ<br>♪ まけてくやしい はないちもんめ`,
+    `あの遊びってさ、<br><strong>「選ぶ・選ばれる」</strong>が<br>ぜんぶ詰まってるんですよ。`,
+    `で、私たちって、<br>子どもの頃にどんなことを思ってたかが、<br><strong>潜在意識</strong>っていう場所に<br>すっごい色濃く溜まってるんですね。`,
+    `だから、あの頃<br>「つい見ちゃってたところ」に、<br>今のあなたの<strong>思考のクセ</strong>のヒントが<br>隠れてたりします。`
+  ], askName);
+}
+
+function askName(){
+  botSays([`はじめる前に…<br>お名前、なんて呼んだらいいですか？<br>ニックネームでOKですよ。`], ()=>{
+    const wrap = document.createElement('div');
+    wrap.className = 'name-wrap';
+    wrap.innerHTML = `<input type="text" id="nameInput" placeholder="ニックネームでOK" maxlength="12" autocomplete="off">
+      <button type="button" id="nameBtn">送信</button>`;
+    chatArea.appendChild(wrap); scrollToBottom();
+    const input = wrap.querySelector('#nameInput');
+    const doSubmit = ()=>{
+      const v = input.value.trim();
+      userName = v ? v.slice(0,12) : "あなた";
+      wrap.remove();
+      addUserMsg(escapeHTML(userName));
+      setTimeout(()=>{
+        botSays([`${escapeHTML(userName)}さんですね。<br>ありがとうございます。<br><br>それじゃあ、いきますよ。`], askQuestion);
+      }, 350);
+    };
+    wrap.querySelector('#nameBtn').onclick = doSubmit;
+    input.addEventListener('keydown', e=>{ if(e.key === 'Enter') doSubmit(); });
+    setTimeout(()=>input.focus(), 100);
+  });
+}
+
+function escapeHTML(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function askQuestion(){
+  botSays([
+    `はないちもんめをやってた時、<br><strong>あなたはどんなことを<br>思ってました？</strong>`,
+    `正解はないですからね。<br>一番近いものを、<br>直感で選んでみてください。`
+  ], ()=>{
+    addOptions(CHOICES, onAnswer);
+  });
+}
+
+function onAnswer(value){
+  myType = TYPE_OF[value];
+  const box = addCustomHTML(`
+    <div class="analyzing">
+      あの頃の思い、ちょっと見てみますね…
+      <div class="step" id="s1">・ 何を見ていたか</div>
+      <div class="step" id="s2">・ 何を大切にしていたか</div>
+      <div class="step" id="s3">・ 今もつづいているクセ</div>
+    </div>`);
+  ['s1','s2','s3'].forEach((id,i)=>{
+    setTimeout(()=>{ const el = box.querySelector('#'+id); if(el) el.classList.add('done'); scrollToBottom(); }, 700 + i*750);
+  });
+  setTimeout(showResult, 3200);
+}
+
+function showResult(){
+  const t = TYPES[myType];
+  const n = escapeHTML(userName);
+
+  botSays([`${n}さん、<br>ありがとうございます。<br><br>出ました出ました。`], ()=>{
+    addCustomHTML(`
+      <div class="type-card">
+        <p class="tc-eyebrow">あの頃、あなたが見ていたもの</p>
+        <p class="tc-letter">${t.mark}</p>
+        <p class="tc-name">${t.name}</p>
+        <p class="tc-axis">無意識に大切にしていたもの ── ${t.axis}</p>
+      </div>`);
+
+    setTimeout(()=>{
+      botSays(t.body.map(f=>f(n)), ()=>{
+        addCustomHTML(`
+          <div class="gift-card">
+            <p class="g-t">でもこれ、あなたの才能でもあるんです</p>
+            <p class="g-b">${t.gift}</p>
+          </div>`);
+
+        setTimeout(()=>{
+          botSays([`だからこそ、<br>${n}さんに贈りたい問いが<br>ひとつあります。`], ()=>{
+            addCustomHTML(`
+              <div class="q-card">
+                <p class="q-t">あなたへの問い</p>
+                <p class="q-b">${t.q}</p>
+                ${t.qn ? `<p class="q-n">${t.qn}</p>` : ``}
+              </div>`);
+            setTimeout(showMap, 900);
+          });
+        }, 900);
+      });
+    }, 900);
+  });
+}
+
+function showMap(){
+  const cells = AXES.map(a=>`
+    <div class="mcell ${a.k===myType?'on':''}">
+      <div class="l">${a.mark}</div>
+      <div class="n">${a.axis}</div>
+    </div>`).join('');
+  addCustomHTML(`
+    <div class="map-card">
+      <p class="mc-t">はないちもんめの、4つの視線</p>
+      <p class="mc-s">同じ遊びの中で、みんなこれだけ違うものを見てるんです</p>
+      <div class="mgrid">${cells}</div>
+    </div>`);
+  setTimeout(closing, 900);
+}
+
+function closing(){
+  botSays([
+    `「選ばれるかどうか」を見てた人。<br>「友達やみんなの気持ち」を見てた人。<br>「勝つ方法」を見てた人。<br>「自分の世界」を見てた人。`,
+    `私たちってね、<br>世界のぜんぶを見てるわけじゃなくて、<br><strong>自分にとって重要なものを<br>選んで見てる</strong>んですよ。`,
+    `で、子どもの頃に思ってたことって、<br>潜在意識にいちばん色濃く<br>溜まってる材料なんですね。<br><br>だからその「つい見ちゃうところ」、<br>大人になった今も、<br>案外そのまんまだったりします。`,
+    `でもね、思考のクセは<br>「直さなきゃいけないもの」<br>じゃないんです。`,
+    `まずは、<br><br><strong>「あ、私って<br>こういうところ見やすいんだ」</strong><br><br>って気づくこと。`,
+    `<strong>「私かー」</strong>って思えたら、<br>もう、それだけでいいんです。<br><br>気づけたら、今までとは違うものも<br>ちゃんと選べるようになりますから。`
+  ], showCTA);
+}
+
+function showCTA(){
+  const n = escapeHTML(userName);
+  addCustomHTML(`
+    <div class="cta-card">
+      <p class="t">続きは、LINEでお話しさせてください</p>
+      <p class="s">今日わかったのは、あなたの「入り口」だけ。<br>ここから先は、一人ひとり違う道になります。</p>
+      <ul class="cta-list">
+        <li>あなたのタイプの、もう少し深い読み解き</li>
+        <li>残り7タイプの解説（家族や大切な人のことも見えてきます）</li>
+        <li>今日の「問い」を、実際に自分に使ってみるワーク</li>
+        <li>華子からの、こころがほどけるお便り</li>
+      </ul>
+      <button class="cta-btn" onclick="goLine()">LINEで続きを受け取る</button>
+      <button class="cta-btn sub" onclick="location.reload()">もう一度やってみる</button>
+      <p class="cta-note">友だち追加は無料です。<br>いつでもブロックできます（笑）</p>
+    </div>`);
+  botSays([
+    `${n}さん、<br>今日はここまで来てくれて<br>ありがとうございました。`,
+    `あの頃のあなたにも、<br>今のあなたにも。<br><br><strong>自分にダメ出しより、花丸を！</strong>`,
+    `どんな自分にも、花まるを。💮`
+  ]);
+}
+
+function goLine(){
+  if(LINE_URL){ location.href = LINE_URL; }
+  else alert("※準備中：ここに華子さんのLINE友だち追加URLが入ります。");
+}
+
+startChat();
+</script>
+</body>
+</html>

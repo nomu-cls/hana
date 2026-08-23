@@ -12,6 +12,7 @@ YouTube「はなまるチャンネル」／キャッチコピー「自分にダ�
 | `hanako-avatar.jpg` | チャットのアイコン（公式サイトのプロフィール写真） |
 | `og-banner.png` | SNS告知バナー（OGP用） |
 | `hanako.png` | 写真バナー素材 |
+| `img/type1〜4.png` | タイプ別イラスト原本（.jpgはWeb用に640pxへ軽量化したもの。HTMLは.jpgを参照） |
 
 ## 4タイプ
 

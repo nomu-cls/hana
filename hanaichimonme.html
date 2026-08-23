@@ -68,6 +68,7 @@ body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height
 .type-card{background:radial-gradient(420px 220px at 85% -10%, rgba(242,184,75,.4), transparent 62%),var(--plum);color:var(--plum-ink);border-radius:18px;padding:20px 16px 17px;margin:2px 0;text-align:center}
 .type-card .tc-eyebrow{font-size:10px;letter-spacing:.28em;color:#E5C9A4;margin-bottom:8px}
 .type-card .tc-letter{font-family:var(--serif);font-weight:900;font-size:34px;line-height:1;color:#F2B84B;margin-bottom:6px}
+.type-card .tc-img{display:block;width:min(220px,74%);aspect-ratio:1;object-fit:cover;border-radius:16px;margin:2px auto 12px;border:2px solid rgba(251,241,228,.4);box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .type-card .tc-name{font-family:var(--serif);font-size:18px;line-height:1.6}
 .type-card .tc-axis{display:inline-block;margin-top:11px;font-size:11px;letter-spacing:.12em;border:1px solid rgba(251,241,228,.4);border-radius:999px;padding:4px 13px}
 .map-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:15px 13px 13px;margin:2px 0}
@@ -204,7 +205,7 @@ const CHOICES = [
 
 /* ═══ 結果（今のクセを言い当てる4タイプ／思考の学校の仕組み入り） ═══ */
 const TYPES = {
-T1:{ mark:"🙋", axis:"選ばれるかどうか", name:"「私、ちゃんと評価されてる？」<br>たしかめグセさん",
+T1:{ img:"img/type1.jpg", mark:"🙋", axis:"選ばれるかどうか", name:"「私、ちゃんと評価されてる？」<br>たしかめグセさん",
   body:[
     (n)=>`あの頃「選ばれるかどうか」を見てた人はね、大人になると<strong>“たしかめる人”</strong>になるんです。<br><br>LINEの返信が遅いと、不安になる。<br>SNSのいいねの数、つい見ちゃう。<br>「私、なんか悪いことした…？」って考えちゃう。<br><br>…どうですか？（笑）`,
     ()=>`じつは私も、これなんです。<br>選ばれない私に直面するのが嫌すぎて、「あんな残酷なゲームはない」って思ってました（笑）<br><br>で、思考の学校ではこう考えるんですね。<br><br>子どもの頃の「選ばれないかも」って思いは<strong>潜在意識</strong>に色濃く溜まる。思考って<strong>量</strong>だから、溜まったぶんだけ大人になっても、<strong>選ばれてるか確認したくなる現実</strong>を自分で作り続けちゃうんです。`,
@@ -213,7 +214,7 @@ T1:{ mark:"🙋", axis:"選ばれるかどうか", name:"「私、ちゃんと�
   gift:`求められたことに、ちゃんと応える力。<br>人の気持ちに敏感でいられる繊細さ。`,
   q:`誰にも選ばれなくても、<br>私は私を選べる？`, qn:"" },
 
-T2:{ mark:"🤝", axis:"みんなの気持ち", name:"「私が気をつかえば、うまくいく」<br>まるくおさめグセさん",
+T2:{ img:"img/type2.jpg", mark:"🤝", axis:"みんなの気持ち", name:"「私が気をつかえば、うまくいく」<br>まるくおさめグセさん",
   body:[
     (n)=>`あの頃「みんなの気持ち」を見てた人はね、大人になると<strong>“場をまるくおさめる人”</strong>になるんです。<br><br>気まずい沈黙があると、自分が埋めちゃう。<br>本当は疲れてるのに「大丈夫だよ」って言っちゃう。<br>頼まれてもいないのに、先回りして動いちゃう。<br><br>…心当たり、あります？（笑）`,
     ()=>`思考の学校的に見るとね、<br><br>「私がなんとかしなきゃ」<br>「私が我慢すれば、まるくおさまる」<br><br>って思いが潜在意識に溜まってると、大人になっても<strong>“私が気をつかう現実”“私が我慢する現実”</strong>を、自分で作り続けちゃうんです。<br><br>旦那さんも、職場の人も、じつは自分の思いを見せてくれてる<strong>鏡</strong>なんですね。`,
@@ -223,7 +224,7 @@ T2:{ mark:"🤝", axis:"みんなの気持ち", name:"「私が気をつかえ�
   q:`ところで私は、<br>今、どう感じてる？`,
   qn:`あなたも「みんな」の一人ですからね。` },
 
-T3:{ mark:"🔥", axis:"勝つ方法", name:"「休んでる私は、なんかダメ」<br>がんばりグセさん",
+T3:{ img:"img/type3.jpg", mark:"🔥", axis:"勝つ方法", name:"「休んでる私は、なんかダメ」<br>がんばりグセさん",
   body:[
     (n)=>`あの頃「どうやったら勝てるか」を見てた人はね、大人になると<strong>“休めない人”</strong>になるんです。<br><br>予定のない休日が、逆に落ち着かない。<br>人が褒められてると、ちょっとザワッとする。<br>「で、結果は？」って自分に聞いちゃう。<br><br>…ドキッとしました？（笑）`,
     ()=>`思考の学校ではね、こう見るんです。<br><br>「負けたくない」「頑張ってる私には価値がある」って思いが潜在意識に溜まると、<br><br>いつの間にか<strong>勝ち負けで測る現実</strong>、ライバルだらけの現実を自分で作っちゃう。<br><br>旦那さん相手にまで、勝ちたくなっちゃったりね（笑）`,
@@ -233,7 +234,7 @@ T3:{ mark:"🔥", axis:"勝つ方法", name:"「休んでる私は、なんか�
   q:`勝たなくても楽しいことって、<br>何だろう？`,
   qn:`結果じゃなくてね、<br>夢中になってる自分にも、ちゃんと価値があるんです。` },
 
-T4:{ mark:"🌟", axis:"自分の世界", name:"「飛び込む前に、考えちゃう」<br>ようすみグセさん",
+T4:{ img:"img/type4.jpg", mark:"🌟", axis:"自分の世界", name:"「飛び込む前に、考えちゃう」<br>ようすみグセさん",
   body:[
     (n)=>`あの頃、一歩引いて見てた人はね、大人になると<strong>“様子をみる人”</strong>になるんです。<br><br>やりたいことがあっても、まず調べる。<br>SNSは、ほぼ見る専門。<br>「私がやるほどのことじゃないし」が口ぐせ。<br><br>…見てました？私のこと（笑）`,
     ()=>`場に飲み込まれない<strong>自分の視点</strong>を持ってるって、本当に素敵な資質なんです。<br><br>ただ、思考の学校的に言うとね、<br><br>「輪の中は、ちょっとめんどくさい」<br>「恥をかきたくない」<br><br>って思いも潜在意識に溜まっていって、<strong>“いつも少し外側にいる現実”</strong>を、自分で作ってたりするんです。`,
@@ -315,6 +316,7 @@ function askQuestion(){
 
 function onAnswer(value){
   myType = TYPE_OF[value];
+  const pre = new Image(); pre.src = TYPES[myType].img;
   const box = addCustomHTML(`
     <div class="analyzing">
       あの頃の思い、ちょっと見てみますね…
@@ -341,7 +343,7 @@ function showResult(){
     addCustomHTML(`
       <div class="type-card">
         <p class="tc-eyebrow">その視線、いまのあなたには…</p>
-        <p class="tc-letter">${t.mark}</p>
+        <img class="tc-img" src="${t.img}" alt="" onerror="this.remove()">
         <p class="tc-name">${t.name}</p>
         <p class="tc-axis">あの頃見ていたもの ── ${t.axis}</p>
       </div>`);

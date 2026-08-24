@@ -1,0 +1,494 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>はないちもんめセラピー 設計書</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#FBF6EF;
+  --card:#FFFFFF;
+  --sunk:#F4EDE2;
+  --ink:#3D2C1D;
+  --ink-soft:#8B7A66;
+  --rule:rgba(61,44,29,.13);
+  --rule-strong:rgba(61,44,29,.26);
+  --hana:#E07B39;
+  --hana-wash:#FBEADB;
+  --nomu:#4A7C59;
+  --nomu-wash:#E4EFE6;
+  --flag:#C8412B;
+  --flag-wash:#FAE6E2;
+  --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  --mono:"Roboto Mono","SFMono-Regular",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#201A14;
+    --card:#2B2219;
+    --sunk:#332920;
+    --ink:#EDE3D6;
+    --ink-soft:#A99883;
+    --rule:rgba(237,227,214,.15);
+    --rule-strong:rgba(237,227,214,.3);
+    --hana:#F0954F;
+    --hana-wash:#3D2A1B;
+    --nomu:#84B491;
+    --nomu-wash:#25332A;
+    --flag:#E8735E;
+    --flag-wash:#3D231D;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#201A14;
+  --card:#2B2219;
+  --sunk:#332920;
+  --ink:#EDE3D6;
+  --ink-soft:#A99883;
+  --rule:rgba(237,227,214,.15);
+  --rule-strong:rgba(237,227,214,.3);
+  --hana:#F0954F;
+  --hana-wash:#3D2A1B;
+  --nomu:#84B491;
+  --nomu-wash:#25332A;
+  --flag:#E8735E;
+  --flag-wash:#3D231D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:48rem;margin:0 auto;padding:clamp(28px,5vw,60px) clamp(18px,4vw,32px) 80px}
+
+/* ── header ── */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.16em;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+}
+h1{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(30px,6.5vw,44px);
+  line-height:1.35;
+  letter-spacing:.01em;
+  text-wrap:balance;
+  margin:10px 0 0;
+}
+.lede{max-width:34rem;margin-top:16px;color:var(--ink-soft)}
+.lede strong{color:var(--ink);font-weight:700}
+
+.status{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  border-radius:12px;
+  overflow:hidden;
+  margin-top:30px;
+}
+.status div{background:var(--card);padding:14px 16px}
+.status dt{
+  font-size:11px;
+  letter-spacing:.1em;
+  color:var(--ink-soft);
+  font-family:var(--mono);
+}
+.status dd{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:19px;
+  line-height:1.5;
+  margin-top:3px;
+  font-variant-numeric:tabular-nums;
+}
+.status dd a{color:var(--hana);text-decoration:none;border-bottom:1.5px solid currentColor;font-size:15px}
+.status dd a:hover{opacity:.75}
+.status dd.flagged{color:var(--flag)}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;font-size:13px;color:var(--ink-soft)}
+.legend span{display:flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.dot.h{background:var(--hana)}
+.dot.n{background:var(--nomu)}
+
+/* ── tiers ── */
+.tier{margin-top:52px}
+.tier-head{border-top:2px solid var(--rule-strong);padding-top:16px}
+.tier-head h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(19px,3.6vw,23px);
+  line-height:1.5;
+  text-wrap:balance;
+}
+.tier-head p{font-size:13.5px;color:var(--ink-soft);margin-top:5px}
+.tier.urgent .tier-head{border-top-color:var(--flag)}
+.tier.urgent .tier-head h2{color:var(--flag)}
+
+/* ── item cards ── */
+.item{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:20px 20px 18px;
+  margin-top:14px;
+}
+.item.urgent{border-color:var(--flag);box-shadow:0 0 0 1px var(--flag)}
+.item-top{display:flex;gap:12px;align-items:flex-start}
+.chk{
+  appearance:none;
+  width:22px;height:22px;
+  flex-shrink:0;
+  margin-top:4px;
+  border:2px solid var(--rule-strong);
+  border-radius:6px;
+  background:var(--ground);
+  cursor:pointer;
+  position:relative;
+  transition:background .15s,border-color .15s;
+}
+.chk:checked{background:var(--nomu);border-color:var(--nomu)}
+.chk:checked::after{
+  content:"";
+  position:absolute;
+  left:6px;top:2px;
+  width:5px;height:11px;
+  border:solid #fff;
+  border-width:0 2.5px 2.5px 0;
+  transform:rotate(42deg);
+}
+.chk:focus-visible{outline:2px solid var(--hana);outline-offset:2px}
+.item-title{flex:1}
+.item-title h3{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:17.5px;
+  line-height:1.6;
+  text-wrap:balance;
+}
+.item:has(.chk:checked) .item-title h3{opacity:.5;text-decoration:line-through;text-decoration-thickness:1.5px}
+.who{
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  padding:2px 9px;
+  border-radius:999px;
+  margin-bottom:7px;
+}
+.who.h{background:var(--hana-wash);color:var(--hana)}
+.who.n{background:var(--nomu-wash);color:var(--nomu)}
+
+.rows{margin-top:14px;padding-left:34px;display:flex;flex-direction:column;gap:11px}
+.row{display:grid;grid-template-columns:6.5rem 1fr;gap:4px 14px;font-size:14.5px}
+.row dt{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+  padding-top:6px;
+}
+.row dd{line-height:1.85}
+@media (max-width:560px){
+  .rows{padding-left:0}
+  .row{grid-template-columns:1fr;gap:2px}
+  .row dt{padding-top:0}
+}
+code{
+  font-family:var(--mono);
+  font-size:.86em;
+  background:var(--sunk);
+  border:1px solid var(--rule);
+  border-radius:5px;
+  padding:1px 6px;
+  word-break:break-all;
+}
+.fill{
+  margin-top:6px;
+  background:var(--sunk);
+  border:1.5px dashed var(--rule-strong);
+  border-radius:9px;
+  padding:13px 15px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+/* ── table ── */
+.scroll{overflow-x:auto;margin-top:6px;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:440px;font-size:13.5px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.75}
+thead th{background:var(--sunk);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);font-weight:500}
+tbody tr:last-child td{border-bottom:none}
+td.name{font-family:var(--display);font-weight:700;white-space:nowrap}
+
+/* ── options ── */
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+.opt{background:var(--sunk);border:1px solid var(--rule);border-radius:10px;padding:12px 14px}
+.opt.best{border-color:var(--hana);background:var(--hana-wash)}
+.opt h4{font-family:var(--display);font-weight:700;font-size:14.5px;line-height:1.6}
+.opt p{font-size:13px;color:var(--ink-soft);margin-top:3px;line-height:1.8}
+.tag{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;
+  background:var(--hana);color:#fff;border-radius:4px;padding:1px 7px;margin-left:7px;vertical-align:2px;
+}
+
+/* ── handoff ── */
+.handoff{
+  margin-top:52px;
+  background:var(--hana-wash);
+  border:1.5px solid var(--hana);
+  border-radius:16px;
+  padding:24px 22px;
+}
+.handoff h2{font-family:var(--display);font-weight:900;font-size:21px;line-height:1.5}
+.handoff p{font-size:14px;color:var(--ink-soft);margin-top:6px}
+.handoff ol{margin:16px 0 0;padding-left:1.3em}
+.handoff li{margin:9px 0;line-height:1.85;font-size:15px}
+.handoff li b{font-weight:700}
+
+footer{
+  margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+  display:flex;flex-wrap:wrap;gap:6px 20px;
+}
+footer a{color:var(--hana)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">小泉華子 ／ はないちもんめセラピー</p>
+  <h1>完成までに、決めること</h1>
+  <p class="lede">診断ページは<strong>もう動いています</strong>。ここから先に残っているのは、はなちゃんにしか決められないことです。全部で8つ、そのうち<strong>1つが公開を止めています</strong>。</p>
+
+  <dl class="status">
+    <div><dt>DIAGNOSTIC</dt><dd><a href="https://nomu-cls.github.io/hana/">nomu-cls.github.io/hana/</a></dd></div>
+    <div><dt>REMAINING</dt><dd><span id="left">8</span> 項目</dd></div>
+    <div><dt>BLOCKING</dt><dd class="flagged">1 件</dd></div>
+  </dl>
+
+  <p class="legend">
+    <span><i class="dot h"></i>はな ＝ はなちゃんが決める・作る</span>
+    <span><i class="dot n"></i>のむ ＝ ノムさんが入れる・直す</span>
+  </p>
+</header>
+
+<!-- TIER 1 -->
+<section class="tier urgent">
+  <div class="tier-head">
+    <h2>これがないと、公開できない</h2>
+    <p>いま診断を最後まで進めても、この1つのせいで登録できません。</p>
+  </div>
+
+  <article class="item urgent">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c1" aria-labelledby="t1">
+      <div class="item-title">
+        <span class="who h">はな → のむ</span>
+        <h3 id="t1">LINEの友だち追加URL</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>いまの状態</dt><dd>緑の「解説動画を受け取る（無料）」を押すと、「※準備中」と表示されます。</dd></div>
+      <div class="row"><dt>入る場所</dt><dd><code>hanaichimonme.html</code> の上のほう、<code>const LINE_URL = "";</code> の空っぽの中</dd></div>
+      <div class="row"><dt>探し方</dt><dd>LINE公式アカウントの管理画面 → 友だち追加 → URLをコピー（<code>https://lin.ee/</code> ではじまるもの）</dd></div>
+      <div class="row"><dt>決めること</dt><dd><div class="fill">URL：____________________________________</div></dd></div>
+    </dl>
+  </article>
+</section>
+
+<!-- TIER 2 -->
+<section class="tier">
+  <div class="tier-head">
+    <h2>これがないと、登録されても続かない</h2>
+    <p>公開はできる。でもここが空だと、登録した人が「そのあと何も来ない」状態になります。</p>
+  </div>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c2" aria-labelledby="t2">
+      <div class="item-title">
+        <span class="who h">はな</span>
+        <h3 id="t2">4タイプの「言い当て」を、はなちゃんの言葉にする</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>なぜ大事</dt><dd>この診断でいちばん効いているのは、結果カードの直後にくる<strong>3行</strong>です。ここが当たっていないと、そのあとの潜在意識の話まで届きません。逆にここが当たると「なんで分かるの？」になります。</dd></div>
+      <div class="row"><dt>やること</dt><dd>下の12コについて、◯（このまま）／△（言い方を変えたい）／×（そもそも違う）を言ってもらえれば直します。</dd></div>
+      <div class="row"><dt>いまの中身</dt><dd>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>タイプ</th><th>いま言い当てている3つ</th></tr></thead>
+            <tbody>
+              <tr><td class="name">たしかめグセさん</td><td>LINEの返信が遅いと不安になる ／ SNSのいいねの数をつい見ちゃう ／「私、なんか悪いことした…？」と考えちゃう</td></tr>
+              <tr><td class="name">まるくおさめグセさん</td><td>気まずい沈黙を自分が埋めちゃう ／ 疲れてるのに「大丈夫だよ」と言っちゃう ／ 頼まれてないのに先回りして動く</td></tr>
+              <tr><td class="name">がんばりグセさん</td><td>予定のない休日が落ち着かない ／ 人が褒められるとザワッとする ／「で、結果は？」と自分に聞く</td></tr>
+              <tr><td class="name">ようすみグセさん</td><td>やりたいことがあってもまず調べる ／ SNSはほぼ見る専門 ／「私がやるほどのことじゃないし」が口ぐせ</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </dd></div>
+    </dl>
+  </article>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c3" aria-labelledby="t3">
+      <div class="item-title">
+        <span class="who h">はな → のむ</span>
+        <h3 id="t3">登録してくれた人の「タイプ」を、どうやって知るか</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>問題</dt><dd>いまの作りだと、4タイプの誰が登録しても<strong>はなちゃん側からは全員同じに見えます</strong>。「あなたのタイプの解説を送ります」と約束しているのに、送り分けられません。ここは決めないと先に進めない設計の穴です。</dd></div>
+      <div class="row"><dt>選べる案</dt><dd>
+        <div class="opts">
+          <div class="opt best">
+            <h4>案A　タイプごとに登録URLを分ける<span class="tag">配信ツールがあるなら</span></h4>
+            <p>4タイプ分のURLを発行して、診断のボタンをタイプ別に出し分けます。登録した瞬間に自動でタグがつくので、はなちゃんの手間はゼロ。Utageのような配信ツールを使っているならこれ。</p>
+          </div>
+          <div class="opt best">
+            <h4>案B　登録直後に、本人に聞く<span class="tag">LINE公式だけなら</span></h4>
+            <p>登録するとすぐ「あなたのタイプを教えてね」と4つのボタンが出て、押してもらう。LINE公式アカウントの機能だけでできます。ひと手間増えるぶん、確実。</p>
+          </div>
+          <div class="opt">
+            <h4>案C　合言葉を渡す</h4>
+            <p>診断の最後に「まるく」などの合言葉を出して、送ってもらう。設定は一番かんたんですが、送ってくれない人が出るぶん取りこぼします。</p>
+          </div>
+        </div>
+      </dd></div>
+      <div class="row"><dt>決めること</dt><dd><div class="fill">案：____　／　使っている配信ツール：____________________</div>
+        <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">※どれを選んでも、診断ページ側の直しが1回入ります（のむ）</p>
+      </dd></div>
+    </dl>
+  </article>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c4" aria-labelledby="t4">
+      <div class="item-title">
+        <span class="who h">はな</span>
+        <h3 id="t4">プレゼント①　タイプ別の、もう少し深い読み解き</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>約束</dt><dd>診断の最後で「登録してくれた方に、あなたのタイプの解説動画をプレゼントします」と言っています。</dd></div>
+      <div class="row"><dt>決めること</dt><dd>4本撮るか、1本にまとめて章で分けるか。そして長さ。</dd></div>
+      <div class="row"><dt>おすすめ</dt><dd>まず<strong>1本（4タイプ全部で10〜15分）</strong>で始めるのが軽いです。これなら②の「残り3タイプの解説」も同時に満たせます。反応を見てから4本に分ければいい。</dd></div>
+      <div class="row"><dt>決めること</dt><dd><div class="fill">本数：____本　／　長さ：____分　／　撮る日：____月____日</div></dd></div>
+    </dl>
+  </article>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c5" aria-labelledby="t5">
+      <div class="item-title">
+        <span class="who h">はな</span>
+        <h3 id="t5">プレゼント③　「問い」を自分に使ってみるワーク</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>中身</dt><dd>紙1枚で成立します。診断で出た問い（例：「誰にも選ばれなくても、私は私を選べる？」）を書き写して、1週間持ち歩く。気づいたことを1行だけ書く。それくらいで十分効きます。</dd></div>
+      <div class="row"><dt>形式</dt><dd>PDF1枚でも、LINEのメッセージ3通でも可。動画より先に、これだけ用意しておくのも手です。</dd></div>
+      <div class="row"><dt>決めること</dt><dd><div class="fill">形式：____________________________________</div></dd></div>
+    </dl>
+  </article>
+</section>
+
+<!-- TIER 3 -->
+<section class="tier">
+  <div class="tier-head">
+    <h2>動きだしてから、足していけばいいもの</h2>
+    <p>止まる理由にはなりません。走らせながらで大丈夫です。</p>
+  </div>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c6" aria-labelledby="t6">
+      <div class="item-title">
+        <span class="who h">はな</span>
+        <h3 id="t6">入り口を、どこに置くか</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>候補</dt><dd>YouTubeの概要欄／動画の最後で口頭＋概要欄／Instagramのプロフィール／公式サイト／講座のあとの案内</dd></div>
+      <div class="row"><dt>ひとこと</dt><dd>いちばん効くのは<strong>動画の中で「やってみて」と言うこと</strong>です。概要欄に置くだけだと、ほとんど押されません。</dd></div>
+      <div class="row"><dt>決めること</dt><dd><div class="fill">貼る場所：____________________________________</div></dd></div>
+    </dl>
+  </article>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c7" aria-labelledby="t7">
+      <div class="item-title">
+        <span class="who n">のむ</span>
+        <h3 id="t7">シェアされたときの見え方</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>いま</dt><dd>LINEやSNSに貼ると、バナー画像と「同じ遊びをしていても、見ていた世界は一人ひとり違います。」という文で表示されます。</dd></div>
+      <div class="row"><dt>やること</dt><dd>この見え方でよければ、そのまま。変えたい文があれば差し替えます。</dd></div>
+    </dl>
+  </article>
+
+  <article class="item">
+    <div class="item-top">
+      <input type="checkbox" class="chk" id="c8" aria-labelledby="t8">
+      <div class="item-title">
+        <span class="who n">のむ</span>
+        <h3 id="t8">何人がやって、何人が登録したか</h3>
+      </div>
+    </div>
+    <dl class="rows">
+      <div class="row"><dt>いま</dt><dd><strong>数えていません。</strong>このままだと、うまくいったかどうかが感覚でしか分かりません。</dd></div>
+      <div class="row"><dt>見たい数字</dt><dd>始めた人 ／ 最後まで進んだ人 ／ ボタンを押した人 ／ タイプの内わけ</dd></div>
+      <div class="row"><dt>ひとこと</dt><dd>タイプの内わけが分かると、<strong>次に撮る動画のネタになります</strong>。「うちのチャンネル、がんばりグセさんが多い」と分かれば、その人向けに話せる。</dd></div>
+    </dl>
+  </article>
+</section>
+
+<!-- HANDOFF -->
+<section class="handoff">
+  <h2>決まったら、のむさんに渡すもの</h2>
+  <p>この4つが揃えば、公開まで進みます。全部同時じゃなくて大丈夫です。</p>
+  <ol>
+    <li><b>LINEの友だち追加URL</b> — これだけで、まず公開できます</li>
+    <li><b>4タイプの ◯△×</b> — 直したい言い回しがあれば、その言葉ごと</li>
+    <li><b>タイプの見分け方</b> — 案A・B・Cのどれか＋使っている配信ツール名</li>
+    <li><b>プレゼントの動画</b> — できあがってから、URLかファイルで</li>
+  </ol>
+</section>
+
+<footer>
+  <span>2026年8月24日 現在</span>
+  <span>診断ページ ／ <a href="https://nomu-cls.github.io/hana/">nomu-cls.github.io/hana/</a></span>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var boxes = document.querySelectorAll('.chk');
+  var out = document.getElementById('left');
+  function sync(){
+    var done = 0;
+    boxes.forEach(function(b){ if(b.checked) done++; });
+    out.textContent = boxes.length - done;
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', sync); });
+  sync();
+})();
+</script>

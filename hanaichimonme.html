@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>はないちもんめセラピー — あの頃のあなたは、何を見ていた？｜小泉華子</title>
 <meta name="description" content="子どもの頃の「はないちもんめ」で、あなたは何を思っていましたか。その記憶から、今もつづく思考のクセと、あなたが無意識に大切にしてきたものを見つけます。どんな自分にも花まるを。小泉華子（はなちゃん）のはないちもんめセラピー。">
-<meta property="og:title" content="はないちもんめセラピー｜あの頃のあなたは、何を見ていた？">
-<meta property="og:description" content="同じ遊びをしていても、見ていた世界は一人ひとり違います。3分であなたの「つい見てしまうところ」を。">
+<meta property="og:title" content="はないちもんめセラピー｜あの頃、あなたは何を見てた？">
+<meta property="og:description" content="同じ遊びをしていても、見ていた世界は違う。子どもの頃の記憶から、いまの思考のクセがわかります。3分・無料。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://nomu-cls.github.io/hana/og-banner.png">
+<meta property="og:site_name" content="小泉華子｜どんな自分にも花まるを">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://nomu-cls.github.io/hana/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://nomu-cls.github.io/hana/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,6 +123,32 @@ body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height
    ═══════════════════════════════════════════ */
 const LINE_URL   = "";              // ← はなちゃんのLINE友だち追加URL（https://lin.ee/xxxx）
 const AVATAR_IMG = "hanako-avatar.jpg";  // ← 同じフォルダに写真を置く
+
+// タイプ別にLINEを分けるとき（設計書の案A）だけ、ここを埋めます。
+// 例: {T1:"https://lin.ee/aaa", T2:"https://lin.ee/bbb", T3:"...", T4:"..."}
+// 空のままなら、全員 LINE_URL に飛びます。
+const LINE_URL_BY_TYPE = {};
+
+// Google アナリティクス4 の測定ID（G-XXXXXXXXXX）。
+// 空のままなら、どこにも送信しません（開発中はコンソールに出るだけ）。
+const ANALYTICS_ID = "";
+
+/* ═══ 計測 ═══ */
+if(ANALYTICS_ID){
+  const g = document.createElement('script');
+  g.async = true;
+  g.src = 'https://www.googletagmanager.com/gtag/js?id=' + ANALYTICS_ID;
+  document.head.appendChild(g);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', ANALYTICS_ID);
+}
+function track(name, params){
+  params = params || {};
+  if(window.gtag) gtag('event', name, params);
+  else console.log('[track]', name, params);
+}
 
 /* ═══ チャットエンジン ═══ */
 const chatArea = document.getElementById('chatArea');
@@ -250,6 +280,7 @@ let dispName = "あなた";   // 敬称込みの表示名（エスケープ済�
 let myType = null;
 
 function startChat(){
+  track('shindan_start');
   botSays([
     `こんにちは。<br>どんな自分にも花まるを。<br>小泉華子です。`,
     `今日はね、ちょっとだけ<br>昔のことを思い出してもらいます。`,
@@ -316,6 +347,7 @@ function askQuestion(){
 
 function onAnswer(value){
   myType = TYPE_OF[value];
+  track('shindan_answer', {shindan_type: myType});
   const pre = new Image(); pre.src = TYPES[myType].img;
   const box = addCustomHTML(`
     <div class="analyzing">
@@ -413,6 +445,7 @@ function showCTA(){
     `で、ここからが本題なんですけど…`,
     `この続き、<strong>タイプ別の解説動画</strong>で<br>お話しすることにしました。<br><br>あなたの思考のクセが、<br>今どんな現実を作ってるか。<br>そのクセと、どう仲直りしていくか。<br><br>文字だけじゃ、伝えきれないんで（笑）`
   ], ()=>{
+    track('shindan_finish', {shindan_type: myType});
     addCustomHTML(`
     <div class="cta-card">
       <p class="t">🎬 続きの解説動画、<br>見たくないですか？</p>
@@ -432,7 +465,9 @@ function showCTA(){
 }
 
 function goLine(){
-  if(LINE_URL){ location.href = LINE_URL; }
+  const url = LINE_URL_BY_TYPE[myType] || LINE_URL;
+  track('line_click', {shindan_type: myType});
+  if(url){ location.href = url; }
   else alert("※準備中：ここに華子さんのLINE友だち追加URLが入ります。");
 }
 

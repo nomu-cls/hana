@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{
+  background:
+    radial-gradient(680px 460px at 88% 6%, rgba(233,138,60,.16), transparent 62%),
+    radial-gradient(520px 400px at 4% 96%, rgba(232,84,47,.10), transparent 60%),
+    #FDF6EC;
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  color:#4C3B2A;
+  display:flex;
+  align-items:center;
+  gap:44px;
+  padding:52px 56px;
+}
+.left{flex:1;display:flex;flex-direction:column;min-width:0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;align-self:flex-start;
+  font-size:19px;font-weight:700;letter-spacing:.04em;
+  color:#E07B39;background:#FBEADB;border:1.5px solid rgba(224,123,57,.4);
+  border-radius:999px;padding:7px 18px;margin-bottom:26px;
+}
+h1{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:900;
+  font-size:69px;
+  line-height:1.28;
+  letter-spacing:.005em;
+  color:#3D2C1D;
+}
+h1 em{font-style:normal;color:#E8542F}
+.title{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;font-size:31px;line-height:1.5;color:#8B5E3C;
+  margin-top:20px;letter-spacing:.02em;
+}
+.sub{font-size:20px;line-height:1.75;color:#8B7A66;margin-top:12px;font-weight:500}
+.by{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:26px}
+.by img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid #E07B39}
+.by .n{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;font-size:23px;line-height:1.35}
+.by .r{font-size:15.5px;color:#8B7A66;line-height:1.45}
+.right{width:404px;flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.right figure{
+  background:#fff;border:2px solid rgba(76,59,42,.1);border-radius:22px;
+  overflow:hidden;box-shadow:0 10px 26px rgba(76,59,42,.13);
+}
+.right img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+</head>
+<body>
+  <div class="left">
+    <span class="eyebrow">💮 3分でわかる・無料</span>
+    <h1>あの頃、あなたは<br><em>何を見てた？</em></h1>
+    <p class="title">はないちもんめセラピー</p>
+    <p class="sub">同じ遊びをしていても、見ていた世界は違う。<br>子どもの頃の記憶から、いまの思考のクセがわかります。</p>
+    <div class="by">
+      <img src="hanako-avatar.jpg" alt="">
+      <div>
+        <p class="n">小泉華子</p>
+        <p class="r">思考の学校 上級認定講師／どんな自分にも花まるを</p>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <figure><img src="img/type1.jpg" alt=""></figure>
+    <figure><img src="img/type2.jpg" alt=""></figure>
+    <figure><img src="img/type3.jpg" alt=""></figure>
+    <figure><img src="img/type4.jpg" alt=""></figure>
+  </div>
+</body>
+</html>

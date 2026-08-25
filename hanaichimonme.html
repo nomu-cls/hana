@@ -100,6 +100,8 @@ body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height
 .cta-btn{display:block;width:100%;padding:15px;border:none;border-radius:999px;margin-bottom:9px;background:#06C755;color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:transform .12s,box-shadow .2s}
 .cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(6,199,85,.35)}
 .cta-note{font-size:10.5px;color:var(--ink-dim);margin-top:8px;line-height:1.7}
+.scene-wrap{align-self:stretch;max-width:100%;animation:fadeUp .45s ease both}
+.scene{display:block;width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 4px 16px rgba(76,59,42,.1);background:var(--white)}
 .analyzing{background:var(--white);border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;padding:14px 16px;font-size:13px}
 .analyzing .step{color:var(--ink-dim);margin-top:5px;transition:color .3s}
 .analyzing .step.done{color:var(--rose)}
@@ -172,6 +174,12 @@ function addCustomHTML(html){
   div.innerHTML = avatarHTML() + `<div class="msg-bubble" style="padding:7px;background:transparent;border:none;box-shadow:none;max-width:100%;flex:1;">${html}</div>`;
   chatArea.appendChild(div); scrollToBottom();
   return div;
+}
+function addScene(src, alt){
+  const div = document.createElement('div');
+  div.className = 'scene-wrap';
+  div.innerHTML = `<img class="scene" src="${src}" alt="${alt}" onerror="this.parentNode.remove()">`;
+  chatArea.appendChild(div); scrollToBottom();
 }
 function addOptions(options, callback){
   const wrap = document.createElement('div');
@@ -286,6 +294,8 @@ function startChat(){
     `今日はね、ちょっとだけ<br>昔のことを思い出してもらいます。`,
     `子どもの頃にやった、<br><strong>「はないちもんめ」</strong>。<br><br>♪ かってうれしい はないちもんめ<br>♪ まけてくやしい はないちもんめ`
   ], ()=>{
+    addScene('img/hanaichi.jpg', 'はないちもんめをする子どもたち');
+    setTimeout(()=>{
     addTap([["🌸","なつかしい！"],["😅","やってた（笑）"]], ()=>{
       botSays([
         `あの遊びってさ、<br><strong>「選ぶ・選ばれる」</strong>が<br>ぜんぶ詰まってるんですよ。`,
@@ -293,6 +303,7 @@ function startChat(){
         `で、あの頃<br>「つい見ちゃってたところ」に、<br>今のあなたの<strong>思考のクセ</strong>のヒントが<br>隠れてたりするんです。`
       ], askName);
     });
+    }, 700);
   });
 }
 
@@ -471,6 +482,7 @@ function goLine(){
   else alert("※準備中：ここに華子さんのLINE友だち追加URLが入ります。");
 }
 
+new Image().src = 'img/hanaichi.jpg';
 startChat();
 </script>
 </body>
